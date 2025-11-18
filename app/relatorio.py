@@ -1,5 +1,6 @@
-from relatorio import Colecao
+from relatorio import colecao
 
+'''Gera um relatório com estatísticas básicas sobre os livros da coleção do Usuário'''
 class Relatorio:
     def total_publicacoes(self, colecao):
         pass
