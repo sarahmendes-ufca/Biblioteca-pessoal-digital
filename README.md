@@ -7,7 +7,7 @@ A Biblioteca Pessoal é um projeto que permite gerenciar  livros e revistas digi
 |---- | ---- | ---- | ----|
 | Publicacao | id_publicacao, titulo, autor, ano, tipo, genero, numero_de_paginas, nota_avaliacao, status_leitura, avaliacao | @property título, @titulo.setter, @property ano, @ano.setter, @property nota_avaliacao, @nota_avaliacao.setter, CRUD | Colecao, Relatorio, Leitura |
 | Anotacao | texto, trecho, data | adicionar_anotacao, listar_anotacaoes | - |
-| Leitura | NÃO_LIDO, LENDO LIDO | status_leitura, iniciar_leitura, concluir_leitura | Colecao, Relatorio |
+| Leitura | NÃO_LIDO, LENDO, LIDO | status_leitura, iniciar_leitura, concluir_leitura | Colecao, Relatorio |
 | Colecao | publicacoes | adicionar_publicacao, buscar_por_titulo, buscar_por_autor, buscar_por_genero, filtrar_por_status, filtrar_por_periodo, total_publicacoes, publicacoes_lidas, media_avaliacoes | Publicacao, Usuario |
 | Configuracao | genero_favorito, limite_paginas_leitura_simultanea, meta_leitura_anual | carregar_json, salvar_em_json | Publicacao |
 | Usuario | nome, colecao, configuracao | carregar_configuracoes, salvar_configuracoes | Colecao, Configuracao |
