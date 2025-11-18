@@ -1,6 +1,6 @@
 from datetime import date
-from typing import List
 
+'''Agrupa as obras do usuário e permite buscar essas publicações por filtro'''
 class Colecao:
     def __init__(self, publicacoes = None):
         self.publicacoes = publicacoes
