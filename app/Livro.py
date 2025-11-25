@@ -36,7 +36,6 @@ class Livro(Publicacao):
             raise ValueError("Não é possível armazenar título vazio")
         self._titulo = valor
 
-    # ---------- ano ----------
     @property
     def ano(self):
         print("Ano da obra: ")
@@ -47,8 +46,7 @@ class Livro(Publicacao):
         if valor <= 1500:
             raise ValueError("Ano inválido")
         self._ano = valor
-
-    # ---------- nota ----------
+        
     @property
     def nota_avaliacao(self):
         print("Avaliação da obra: ")
@@ -59,3 +57,4 @@ class Livro(Publicacao):
         if not (0 <= valor <= 10):
             raise ValueError("Nota inválida")
         self._nota_avaliacao = valor
+
