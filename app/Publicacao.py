@@ -1,74 +1,79 @@
 from datetime import date
 from typing import List
-from typing import Optional
+from app.Anotacao import Anotacao
+from app.Colecao import Colecao
 
 '''A Classe Publicação é a responsável por ser a base da criação de um livro. Origina duas subclasses: Livro e Revista '''
 class Publicacao:
-    def __init__(self, id_publicacao, titulo, autor, ano, tipo, genero, numero_de_paginas, nota_avaliacao, status_leitura, avaliacao):      
-        self.id_publicacao = id_publicacao
+    def __init__(self, titulo, autor, ano, tipo, genero, ordem: List, numero_de_paginas, nota_avaliacao, status_leitura):      
         self.titulo = titulo
         self.autor = autor
         self.ano = ano
         self.tipo = tipo
         self.genero = genero
+        self.anotacoes = Anotacao(self)
+        self.colecao = Colecao(self)
+        self.ordem = ordem
         self.numero_de_paginas = numero_de_paginas
-        self.nota_avaliacao = nota_avaliacao
+        self._nota_avaliacao = nota_avaliacao
         self.status_leitura = status_leitura
-        self.avaliacao = avaliacao
         
+    # Valida título e ano da publicação
     @property
     def titulo(self):
-        pass
+        print("Título da obra: ")
+        return self._titulo
 
     @titulo.setter
-    def titulo(self, valor = str):
-        pass
+    def titulo(self, valor_titulo: str):
+        if valor_titulo == None:
+            raise ValueError("Não é possível armazenar título vazio")
+        self._titulo = valor_titulo
 
     @property
     def ano(self):
-        pass
+        print("Ano da Obra: ")
+        return self._ano
 
     @ano.setter
-    def ano(self, valor: int):
-        pass
+    def ano(self, valor_ano: int):
+        if valor_ano <= 1500:
+            raise ValueError ("Ano inválido")
+        self._ano = valor_ano
 
     @property
     def nota_avaliacao(self):
-        pass
+        print("Avaliação da obra: ")
+        return self._nota_avaliacao
 
     @nota_avaliacao.setter
-    def nota_avaliacao(self, valor: float):
-        pass
+    def nota_avaliacao(self, valor_avaliacao: float):
+        if valor_avaliacao < 0 or valor_avaliacao > 10:
+            raise ValueError("Nota inválida")
+        self._nota_avaliacao = valor_avaliacao
 
-    def adicionar_publicacao(self):
-        pass
+    @property
+    def tipo(self):
+        print("Tipo da Obra:")
+        return self._tipo
+    
+    @tipo.setter
+    def tipo(self, valor_tipo: list):
+        if valor_tipo != "livro" or valor_tipo != "revista":
+            raise  ValueError("Tipo inválido!")
+        self._tipo = valor_tipo
 
-    def buscar_publicacao(self):
-        pass
-
-    def atualizar_publicacao(self):
-        pass
-
-    def apagar_publicacao(self):
-        pass
-
-    def avaliar_publicacao(self, valor):
-        pass
-
+    # Métodos especiais
     def __str__(self):
-        pass
+        return f'"{self.titulo} de {self.autor}"'
 
     def __repr__(self):
-        pass
+        return f'{self.titulo}, de {self.autor}'
 
     def __lt__(self, other):
-        pass
+        return self.ano < other.ano
 
     def __eq__(self, other):
-        pass
-
-class Livro(Publicacao):
-    pass
-
-class Revista(Publicacao):
-    pass
+        if not isinstance(self, other):
+            return NotImplemented
+        return (self.titulo == self.titulo and self.autor == self.autor)
