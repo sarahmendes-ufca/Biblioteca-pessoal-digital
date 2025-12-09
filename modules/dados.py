@@ -13,8 +13,8 @@ class Dados:
     def adicionar_obra(self, titulo, ano, autor, tipo, genero, numero_paginas, avaliacao, status):
         conn, cursor = self._conectar()
         cursor.execute("""
-            INSERT INTO obra (titulo, ano, autor, tipo, genero, numero_paginas, avaliacao, status)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+        INSERT INTO obra (titulo, ano, autor, tipo, genero, numero_paginas, avaliacao, status)
+        VALUES (?, ?, ?, ?, ?, ?, ?, ?)
         """, (titulo, ano, autor, tipo, genero, numero_paginas, avaliacao, status))
         conn.commit()
         conn.close()
@@ -75,6 +75,27 @@ class Dados:
             INSERT INTO anotacao (id_obra, texto, trecho, data)
             VALUES (?, ?, ?, ?)
         """, (id_obra, texto, trecho, data))
+        conn.commit()
+        conn.close()
+        
+
+    def atualizar_anotacao(self, id_obra, texto, trecho, data):
+        conn, cursor = self._conectar()
+        campos = []
+        valores = []
+        if texto is not None:
+            campos.append("texto=?")
+            valores.append(texto)
+        if trecho is not None:
+            campos.append("trecho=?")
+            valores.append(trecho)
+        if data is not None:
+            campos.append("data=?")
+            valores.append(data)
+
+        valores.append(id_obra) 
+        sql = f"UPDATE obra SET {', '.join(campos)} WHERE id_obra=?"
+        cursor.execute(sql, valores)
         conn.commit()
         conn.close()
 
