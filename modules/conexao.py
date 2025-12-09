@@ -15,10 +15,10 @@ class Conexao:
                     genero TEXT,
                     numero_paginas INTEGER,
                     avaliacao FLOAT,
-                    status TEXT
+                    status TEXT,
+                    UNIQUE(titulo)                   
                 )
             """)
-            
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS anotacao (
                     id_anotacao INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -29,6 +29,3 @@ class Conexao:
                     FOREIGN KEY(id_obra) REFERENCES obra(id_obra)
                 )
             """)
-
-# Instanciando para criar o banco
-Conexao()
