@@ -1,7 +1,12 @@
+from obra import Obra
+from livro import Livro
 from typing import Optional
 from datetime import datetime
 class Anotacao:
-    def __init__(self, texto: str, trecho: Optional[str]):
+    def __init__(self, obra: Obra, texto: str, trecho: Optional[str]):
+        if not isinstance(obra, Obra):
+            raise TypeError("Anotacao precisa de uma instância concreta de Obra")
+        self.obra = obra
         self.texto = texto
         self.trecho = trecho
         self.data_texto = datetime.now().strftime("%d/%m/%y")
@@ -24,10 +29,3 @@ class Anotacao:
             print(f"  data: {anotacao['data']}")
             print(f"  trecho: '{anotacao['trecho']}'")
             print(f"  anotacao: '{anotacao['anotacao']}'")
-
-# Instância da classe Anotação
-
-nova_anotacao = Anotacao("Não gostei desse personagem", "exemplo")
-nova_anotacao.adicionar_anotacao()
-nova_anotacao.mostar_anotacoes()
-print(nova_anotacao.lista_anotacoes)
