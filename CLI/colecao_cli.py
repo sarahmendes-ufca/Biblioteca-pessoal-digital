@@ -1,4 +1,5 @@
 from models.colecao import Colecao
+import sqlite3
 
 class ColecaoCLI:
     def menu_colecao(self):
@@ -8,6 +9,8 @@ class ColecaoCLI:
         print("| 2 - Listar Obra na Coleção         |")
         print("|____________________________________|")
         print("| 3 - Sair                           |")
+        print("|____________________________________|")
+        print("| 4 - Bib Mostrar obras cadastradas  |")
         print("|____________________________________|")
         opcao_acoes_colecao = input("Escolha uma opção: ").strip()
     
@@ -20,7 +23,16 @@ class ColecaoCLI:
         elif opcao_acoes_colecao == "3":
             print("Saindo dp menu Coleção.")
             return
-        
+        elif opcao_acoes_colecao == "4":
+            conn = sqlite3.connect('biblioteca.db')
+            cursor = conn.cursor()
+            cursor.execute(f"SELECT * FROM obra")
+            registros = cursor.fetchall()
+            print(f"Registros na tabela 'obra':")
+            for registro in registros:
+                print(registro)
+            conn.close()
+
         else: 
             print("Opção inválida!")
 
