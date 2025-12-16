@@ -1,5 +1,6 @@
 from CLI.livro_cli import LivroCLI
 from CLI.revista_cli import RevistaCLI
+import sqlite3
  
 class ObraCLI:
     def mostrar_menu_tipo(self):
@@ -8,7 +9,9 @@ class ObraCLI:
         print("|____________________________________|")
         print("| 2 - Revista                        |")
         print("|____________________________________|")
-        print("| 3 - Voltar                         |")
+        print("| 3 - Bib Mostrar obras cadastradas  |")
+        print("|____________________________________|")
+        print("| 4 - Voltar                         |")
         print("|____________________________________|")
         opcao = input("Digite o número: ").strip()
         
@@ -21,6 +24,16 @@ class ObraCLI:
             revista.menu_revista()
 
         elif opcao == "3":
+            conn = sqlite3.connect('biblioteca.db')
+            cursor = conn.cursor()
+            cursor.execute(f"SELECT * FROM obra")
+            registros = cursor.fetchall()
+            print(f"Registros na tabela 'obra':")
+            for registro in registros:
+                print(registro)
+            conn.close()
+
+        elif opcao == "4":
             print("Saindo do Menu Obra.")
             return
         
