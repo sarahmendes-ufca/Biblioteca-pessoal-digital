@@ -44,7 +44,7 @@ class RevistaCLI:
         revista = Revista(titulo, ano, autor, genero, numero_paginas, avaliacao)
         revista.salvar_no_banco()
 
-    def listar_livro_cli(self):
+    def listar_revista_cli(self):
         titulo = input("Digite o titulo da obra:")
         if titulo:
             revistas = Revista.listar_obras(titulo)
@@ -81,4 +81,5 @@ class RevistaCLI:
         Revista.deletar_obra(id_obra)
         
         
+
 
