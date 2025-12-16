@@ -64,7 +64,7 @@ class RevistaCLI:
         titulo = input("Título: ")
         ano = int(input("Ano: "))
         autor = input("Autor: ")
-        genero = input("Gênero: ")
+        genero = input("Gênero, selecione um da lista: (noticia, reportagem, entrevista, editorial, cronica, resenha, opiniao): ")
         numero_paginas = int(input("Numero de páginas: "))
         resp = input("Deseja incluir avaliação: ")
         if resp == "sim" or resp == "s":
@@ -79,4 +79,5 @@ class RevistaCLI:
     def deletar_revista_cli(self):
         id_obra = int(input("Id da obra: "))
         Revista.deletar_obra(id_obra)
+        
         
