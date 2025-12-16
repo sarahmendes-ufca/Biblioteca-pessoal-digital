@@ -1,4 +1,5 @@
 from models.revista import Revista
+import sqlite3
 
 class RevistaCLI:
     def menu_revista(self):
@@ -12,6 +13,8 @@ class RevistaCLI:
             print("| 4 - Deletar Revista                |")
             print("|____________________________________|")
             print("| 5 - Sair                           |")
+            print("|____________________________________|")
+            print("| 6 - Bib Mostrar obras cadastradas  |")
             print("|____________________________________|")
             opcao_acoes_revista = input("Escolha uma opção: ")
         
@@ -31,6 +34,15 @@ class RevistaCLI:
                 print("Saindo do menu Revista.")
                 return
             
+            elif opcao_acoes_revista == "6":
+                conn = sqlite3.connect('biblioteca.db')
+                cursor = conn.cursor()
+                cursor.execute(f"SELECT * FROM obra")
+                registros = cursor.fetchall()
+                print(f"Registros na tabela 'obra':")
+                for registro in registros:
+                    print(registro)
+                conn.close()
             else:
                 print("Opção inválida!")
 
@@ -59,12 +71,11 @@ class RevistaCLI:
             print(revista)
 
     def atulizar_revista_cli(self):
-        print("Atenção: Todos os campos devem ser preenchidos para atualizar a obra.")
         id_obra = int(input("Digite o ID da obra: "))
         titulo = input("Título: ")
         ano = int(input("Ano: "))
         autor = input("Autor: ")
-        genero = input("Gênero, selecione um da lista: (noticia, reportagem, entrevista, editorial, cronica, resenha, opiniao): ")
+        genero = input("Gênero: ")
         numero_paginas = int(input("Numero de páginas: "))
         resp = input("Deseja incluir avaliação: ")
         if resp == "sim" or resp == "s":
@@ -80,6 +91,6 @@ class RevistaCLI:
         id_obra = int(input("Id da obra: "))
         Revista.deletar_obra(id_obra)
         
-        
+
 
 
