@@ -13,8 +13,9 @@ class Livro(Obra):
     
     @genero.setter
     def genero(self, genero_valido):
-        if genero_valido not in ("fantasia", "ficcao", "poseia", "epico", "romance", "drama", "terror", "suspense" ):
-            raise ValueError("Gênero inválido")
-        else:
+        if genero_valido == "":
+                raise ValueError("Gênero inválido! O campo não pode ser vazio!")
+        else: 
             self._genero = genero_valido
+
         
