@@ -19,7 +19,7 @@ class RevistaCLI:
                 self.adicionar_revista_cli()
             
             elif opcao_acoes_revista == "2":
-                self.atulizar_revista_cli()
+                self.listar_revista_cli()
 
             elif opcao_acoes_revista == "3":
                 self.atulizar_revista_cli()
@@ -81,3 +81,4 @@ class RevistaCLI:
         Revista.deletar_obra(id_obra)
         
         
+
