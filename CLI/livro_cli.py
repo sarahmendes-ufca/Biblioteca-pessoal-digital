@@ -39,7 +39,7 @@ class LivroCLI:
         titulo = input("Título: ")
         ano = int(input("Ano: "))
         autor = input("Autor: ")
-        genero = input("Gênero: ")
+        genero = input("Gênero (selecione um dos gêneros da lista: fantasia, ficcao, poseia, epico, romance, drama, terror, suspense ): ")
         numero_paginas = int(input("Numero de páginas: "))
         avaliacao = None
         livro = Livro(titulo, ano, autor, genero, numero_paginas, avaliacao)
@@ -80,4 +80,6 @@ class LivroCLI:
     def deletar_livro_cli(self):
         id_obra = int(input("Id da obra: "))
         Livro.deletar_obra(id_obra)
+        
+
         
