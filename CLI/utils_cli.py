@@ -53,6 +53,6 @@ class UtilsCLI:
             return
         
         else:
-
             print("Opção inválida!")
+
 
