@@ -1,5 +1,6 @@
 from models.anotacao import Anotacao
 from datetime import datetime
+import sqlite3
 
 class AnotacaoCLI:
     def menu_anotacao(self):
@@ -14,6 +15,8 @@ class AnotacaoCLI:
         print("|____________________________________|")
         print("| 5 - Sair                           |")
         print("|____________________________________|")
+        print("| 6 - Bib Mostrar obras cadastradas  |")
+        print("|____________________________________|")
         opcao_acoes_anotacao = input("Escolha uma opção: ")
         
         if opcao_acoes_anotacao == "1":
@@ -27,6 +30,15 @@ class AnotacaoCLI:
         elif opcao_acoes_anotacao == "5":
             print("Saindo do Menu de Anotações")
             return
+        elif opcao_acoes_anotacao == "6":
+            conn = sqlite3.connect('biblioteca.db')
+            cursor = conn.cursor()
+            cursor.execute(f"SELECT * FROM obra")
+            registros = cursor.fetchall()
+            print(f"Registros na tabela 'obra':")
+            for registro in registros:
+                print(registro)
+            conn.close()
         else:
             print("Opção inválida!")
 
@@ -82,6 +94,7 @@ class AnotacaoCLI:
     def deletar_anotacao(self):
         id_anotacao = int(input("Id da anotacao: "))
         Anotacao.deletar_anotacao(id_anotacao)
+
 
 
         
