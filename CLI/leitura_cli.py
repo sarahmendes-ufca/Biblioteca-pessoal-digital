@@ -1,4 +1,5 @@
 from models.leitura import Leitura
+import sqlite3
 
 class LeituraCLI:
     def menu_leitura(self):
@@ -13,6 +14,8 @@ class LeituraCLI:
         print("|____________________________________|")
         print("| 5 - Sair                           |")
         print("|____________________________________|")
+        print("| 6 - Bib Mostrar obras cadastradas  |")
+        print("|____________________________________|")
         opcao_acoes_leitura = input("Escolha uma opção: ")
 
         if opcao_acoes_leitura == "1":
@@ -26,6 +29,16 @@ class LeituraCLI:
         elif opcao_acoes_leitura == "5":
             print("saindo")
             return
+        elif opcao_acoes_leitura == "6":
+            conn = sqlite3.connect('biblioteca.db')
+            cursor = conn.cursor()
+            cursor.execute(f"SELECT * FROM obra")
+            registros = cursor.fetchall()
+            print(f"Registros na tabela 'obra':")
+            for registro in registros:
+                print(registro)
+            conn.close()
+
         else:
             print("Opção inválida!")
 
@@ -50,5 +63,7 @@ class LeituraCLI:
         avaliacao = float(input("Avaliação: "))
         av = Leitura(id_obra, avaliacao)
         av.validar_avaliacao(avaliacao)
+)
+
 
 
