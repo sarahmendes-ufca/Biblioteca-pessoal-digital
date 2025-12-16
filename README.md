@@ -13,40 +13,43 @@ A Biblioteca Pessoal é um projeto que permite gerenciar  livros e revistas digi
 | Usuario | nome, colecao, configuracao | carregar_configuracoes, salvar_configuracoes | Colecao, Configuracao |
 | Relatorio | - | total_publicacoes, publicacoes_lidas, media_avaliacoes, percentual_por_status, top5_avaliacoes | Publicacao, Colecao
 
-# Estrutura de Diretórios
+# Estrutura de diretórios Projeto
 
-/BibliotecaPessoal
-├── /CLI
-│   ├─── init.py
-│   ├─── anotacao_cli.py
-│   ├─── colecao_cli.py
-│   ├─── configuracao_cli.py
-│   ├─── leitura_cli.py
-│   ├─── livro_cli.py
-│   ├─── obra_cli.py
-│   ├─── relatorio_cli.py
-│   ├─── revista_cli.py
-│   ├─── status_cli.py
-│   └─── utils_cli.py
-├── /graphics
-│    ├─── Media de avaliacaoes de Obras Lidas.png
-│    ├─── Número Total de Obras.png
-│    └─── Porcentagem de Livros por Status de Leitura.png
-├── /models
-│   ├─── init.py
-│   ├─── anotacao.py
-│   ├─── colecao.py
-│   ├─── conexao.py
-│   ├─── configuracao.py
-│   ├─── leitura.py
-│   ├─── livro.py
-│   ├─── obra.py
-│   ├─── relatorio.py
-│   ├─── revista.py
-│   └─── status.py
+```bash
+BibliotecaPessoal/
+├── CLI/
+│   ├── __init__.py
+│   ├── anotacao_cli.py
+│   ├── colecao_cli.py
+│   ├── configuracao_cli.py
+│   ├── leitura_cli.py
+│   ├── livro_cli.py
+│   ├── obra_cli.py
+│   ├── relatorio_cli.py
+│   ├── revista_cli.py
+│   ├── status_cli.py
+│   └── utils_cli.py
+├── graphics/
+│   ├── Media de avaliacaoes de Obras Lidas.png
+│   ├── Número Total de Obras.png
+│   └── Porcentagem de Livros por Status de Leitura.png
+├── models/
+│   ├── __init__.py
+│   ├── anotacao.py
+│   ├── colecao.py
+│   ├── conexao.py
+│   ├── configuracao.py
+│   ├── leitura.py
+│   ├── livro.py
+│   ├── obra.py
+│   ├── relatorio.py
+│   ├── revista.py
+│   └── status.py
 ├── .gitignore
 ├── biblioteca.db
 ├── main.py
 ├── README.md
 ├── requirements.txt
 └── settings.json
+```
+
