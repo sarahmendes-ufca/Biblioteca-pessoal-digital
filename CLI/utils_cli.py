@@ -48,10 +48,11 @@ class UtilsCLI:
             rel = RelatorioCLI()
             rel.mostrar_relatorios()
 
-        elif opcao == "6":
+        elif opcao == "7":
             print("Saindo da Biblioteca")
             return
         
         else:
 
             print("Opção inválida!")
+
