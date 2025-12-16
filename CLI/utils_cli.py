@@ -4,7 +4,7 @@ from CLI.anotacao_cli import AnotacaoCLI
 from CLI.colecao_cli import ColecaoCLI
 from CLI.leitura_cli import LeituraCLI
 from CLI.configuracao_cli import ConfiguracaoCLI
-
+# Antes de executar o código, instale os requirements.txt
 class UtilsCLI:
     def escolher_acao(self):
         print(" _________ Biblioteca Pessoal _______")
@@ -53,4 +53,5 @@ class UtilsCLI:
             return
         
         else:
+
             print("Opção inválida!")
