@@ -1,4 +1,5 @@
 from models.configuracao import Configuracao
+import sqlite3
 
 class ConfiguracaoCLI:
     def menu_configuracoes(self):
@@ -6,6 +7,8 @@ class ConfiguracaoCLI:
         print("| 1 - Editar configuracoes           |")
         print("|____________________________________|")
         print("| 2 - Sair                           |")
+        print("|____________________________________|")
+        print("| 3 - Bib Mostrar obras cadastradas  |")
         print("|____________________________________|")
         opcao_acoes_configuracao = input("Escolha uma opção: ").strip()
 
@@ -15,7 +18,16 @@ class ConfiguracaoCLI:
         elif opcao_acoes_configuracao == "2":
             print("Saindo do menu Configurações")
             return
-
+        
+        elif opcao_acoes_configuracao == "3":
+            conn = sqlite3.connect('biblioteca.db')
+            cursor = conn.cursor()
+            cursor.execute(f"SELECT * FROM obra")
+            registros = cursor.fetchall()
+            print(f"Registros na tabela 'obra':")
+            for registro in registros:
+                print(registro)
+            conn.close()
         else:
             print("Opção inválida! ")
 
@@ -49,5 +61,6 @@ class ConfiguracaoCLI:
             return
         config = Configuracao()
         config.atualizar(genero_favorito, meta_anual_leitura, numero_leitura_simultanea)
+
 
         
